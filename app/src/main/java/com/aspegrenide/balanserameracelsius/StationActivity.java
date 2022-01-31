@@ -2,6 +2,7 @@ package com.aspegrenide.balanserameracelsius;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
-public class StationActivity extends AppCompatActivity {
+public class StationActivity extends AppCompatActivity implements MediaPlayer.OnPreparedListener {
 
     private static final String LOG_TAG = "BALANSERA_MERA";
     TextView tvStationName;
@@ -147,6 +148,7 @@ public class StationActivity extends AppCompatActivity {
 
         videoView.seekTo(1);
         videoView.start();
+        videoView.setZOrderOnTop(true);
     }
 
     public void startVideo(View view) {
@@ -163,8 +165,14 @@ public class StationActivity extends AppCompatActivity {
         }
         vv.seekTo(0);
         vv.start();
+        videoView.setZOrderOnTop(true);
     }
 
     public void doneExercise(View view) {
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+
     }
 }
